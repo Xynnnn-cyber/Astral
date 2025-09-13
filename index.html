@@ -3,389 +3,239 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Clan Astral - Roblox</title>
+<title>Clan Astral - Página Única con Secciones</title>
 <style>
-  :root {
-    --negro: #000000;
-    --gris: #222222;
-    --gris-claro: #555555;
-    --gris-medio: #444444;
-    --blanco: #ffffff;
-    --hover-color: #00ffff;
-    --transition-speed: 0.3s;
-  }
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
   body {
-    background-color: var(--negro);
-    color: var(--blanco);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0b0c10;
+    color: #c5c6c7;
+    margin: 0; padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   header {
-    background-color: var(--gris);
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid var(--gris-claro);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    background: #1f2833;
+    padding: 20px 10px;
+    text-align: center;
+    border-bottom: 3px solid #45a29e;
+  }
+  header img.logo {
+    width: 120px; height: 120px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid #45a29e;
+    margin-bottom: 10px;
   }
   header h1 {
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  header h1 img {
-    height: 48px;
-    width: auto; 
-    object-fit: contain;
-    filter: drop-shadow(0 0 3px var(--hover-color));
+    margin: 0;
+    font-size: 2.8rem;
+    color: #66fcf1;
+    letter-spacing: 3px;
   }
   nav {
+    background: #1f2833;
     display: flex;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 10px;
+    border-bottom: 2px solid #45a29e;
     flex-wrap: wrap;
   }
   nav button {
     background: none;
-    border: none;
-    color: var(--blanco);
-    font-weight: 700;
-    font-size: 1rem;
+    border: 2px solid #66fcf1;
+    color: #66fcf1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 8px 18px;
+    border-radius: 8px;
     cursor: pointer;
-    position: relative;
-    padding: 0.25rem 0;
-    transition: color var(--transition-speed) ease;
-    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
-  nav button::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--hover-color);
-    transition: width var(--transition-speed) ease;
-  }
-  nav button:hover,
-  nav button.active {
-    color: var(--hover-color);
-  }
-  nav button:hover::after,
-  nav button.active::after {
-    width: 100%;
+  nav button:hover, nav button.active {
+    background-color: #45a29e;
+    color: #0b0c10;
+    border-color: #45a29e;
   }
   main {
-    flex: 1;
-    max-width: 960px;
-    margin: 2rem auto 3rem;
-    padding: 0 1rem;
+    flex-grow: 1;
+    max-width: 900px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
   }
   section {
     display: none;
-    animation: fadeIn 0.4s ease forwards;
-    margin-bottom: 3rem;
+    animation: fadeIn 0.5s ease forwards;
   }
   section.active {
     display: block;
   }
   h2 {
-    border-bottom: 2px solid var(--gris-claro);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--hover-color);
-    font-weight: 800;
-    letter-spacing: 1px;
+    color: #45a29e;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
   }
-  h3 {
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: var(--hover-color);
-    font-weight: 700;
-  }
-  .card {
-    background-color: var(--gris-medio);
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
+  p, ul {
+    font-size: 1.1rem;
     line-height: 1.6;
-    box-shadow: 0 0 10px rgba(0,255,255,0.1);
-    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
-    cursor: default;
-  }
-  .card:hover {
-    box-shadow: 0 0 20px var(--hover-color);
-    transform: translateY(-5px);
-  }
-  p + p {
-    margin-top: 1rem;
   }
   ul {
-    margin-left: 1.5rem;
-    margin-top: 0.75rem;
-    list-style-type: disc;
+    padding-left: 20px;
   }
   ul li {
-    margin-bottom: 0.6rem;
+    margin-bottom: 10px;
   }
-  a.discord-link {
-    color: var(--hover-color);
-    font-weight: 700;
-    text-decoration: none;
-    transition: color var(--transition-speed) ease;
-  }
-  a.discord-link:hover {
-    color: #00ffffcc;
-    text-decoration: underline;
-  }
-  .logos {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-  }
-  .logos img {
-    height: 80px;
-    width: auto;
-    filter: drop-shadow(0 0 5px var(--hover-color));
-    transition: filter var(--transition-speed) ease, transform var(--transition-speed) ease;
-    cursor: pointer;
-    border-radius: 12px;
-    background: #111;
-  }
-  .logos img:hover {
-    filter: drop-shadow(0 0 15px var(--hover-color));
-    transform: scale(1.1);
-  }
-  .fotos-astral {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  .fotos-astral img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,255,255,0.15);
-    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
-    cursor: pointer;
-  }
-  .fotos-astral img:hover {
-    box-shadow: 0 0 20px var(--hover-color);
-    transform: scale(1.05);
-  }
-  .warlogs {
-    max-height: 300px;
-    overflow-y: auto;
-    background-color: var(--gris);
-    border-radius: 12px;
-    padding: 1rem 1.5rem;
-    font-family: monospace, monospace;
-    font-size: 0.9rem;
-    line-height: 1.3;
-    box-shadow: inset 0 0 10px rgba(0,255,255,0.1);
-    user-select: text;
-    white-space: pre-wrap;
-    margin-top: 1rem;
-  }
-  .warlogs::-webkit-scrollbar {
-    width: 8px;
-  }
-  .warlogs::-webkit-scrollbar-thumb {
-    background-color: var(--hover-color);
-    border-radius: 4px;
-  }
-  .warlogs::-webkit-scrollbar-track {
-    background-color: var(--gris-medio);
+  .intro-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    border: 3px solid #45a29e;
+    box-shadow: 0 0 20px #45a29e88;
+    margin: 20px 0 40px;
   }
   footer {
-    background-color: var(--gris);
+    background: #1f2833;
     text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    border-top: 2px solid var(--gris-claro);
-    user-select: none;
+    padding: 20px 10px;
+    border-top: 3px solid #45a29e;
+    color: #66fcf1;
+    font-weight: 600;
   }
   @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
   }
   @media (max-width: 600px) {
-    header h1 {
-      font-size: 1.5rem;
-      gap: 0.5rem;
-    }
     nav {
-      gap: 1rem;
+      gap: 10px;
     }
-    .logos img {
-      height: 60px;
+    nav button {
+      font-size: 1rem;
+      padding: 6px 12px;
     }
   }
 </style>
 </head>
 <body>
 <header>
-  <h1>
-    <img src="https://cdn.discordapp.com/attachments/1340684717762019379/1416229364621774938/image-fotor-bg-remover-2025091221917.png" alt="Astral logo" />
-    Clan Astral
-  </h1>
-  <nav aria-label="Navegación principal">
-    <button class="active" data-section="introduccion" aria-controls="introduccion" aria-selected="true" role="tab">Introducción</button>
-    <button data-section="reglas" aria-controls="reglas" aria-selected="false" role="tab">Reglas</button>
-    <button data-section="rangos" aria-controls="rangos" aria-selected="false" role="tab">Sistema de Rangos</button>
-    <button data-section="realeza" aria-controls="realeza" aria-selected="false" role="tab">Realeza</button>
-    <button data-section="objetivos" aria-controls="objetivos" aria-selected="false" role="tab">Objetivos y Metas</button>
-    <button data-section="warlogs" aria-controls="warlogs" aria-selected="false" role="tab">Warlogs</button>
-    <button data-section="contacto" aria-controls="contacto" aria-selected="false" role="tab">Contacto</button>
-  </nav>
+  <img class="logo" src="https://images-ext-1.discordapp.net/external/KJuh5BrcieNVuh8lV3sCMmsWfm9LouiTdvqBfEpO0tY/%3Fsize%3D4096/https/cdn.discordapp.com/icons/1118019804440318043/402d9f7bc4ab2877513fb9b691504510.png?format=webp&quality=lossless&width=230&height=230" alt="Logo Clan Astral" />
+  <h1>Clan Astral</h1>
 </header>
+<nav>
+  <button class="tab-button active" data-target="introduccion">Introducción</button>
+  <button class="tab-button" data-target="reglas">Reglas</button>
+  <button class="tab-button" data-target="rangos">Sistema de Rangos</button>
+  <button class="tab-button" data-target="realeza">Realeza</button>
+  <button class="tab-button" data-target="objetivos">Objetivos y Metas</button>
+  <button class="tab-button" data-target="discord">Discord</button>
+</nav>
 <main>
-  <section id="introduccion" class="active" tabindex="0" aria-label="Introducción" role="tabpanel" aria-hidden="false">
+  <section id="introduccion" class="active">
     <h2>Introducción</h2>
-    <div class="card">
-      <p><strong>ASTRAL</strong> fue fundada por Vyhard, Thiago y Playe en mediados de 2022, el primer imperio español surgido dentro de Anomic y de muchos dentro de ROBLOX, donde se demuestra la lealtad de todos sus miembros y Legionarios en servicio.</p>
-      <p>Solo los mejores de los mejores serán considerados dignos de unirse a ASTRAL y al programa de Legionarios. Este codex explicará las reglas que todo recluta y Legionario debe seguir durante su servicio en ASTRAL. Se aplicarán castigos a quienes decidan romper las leyes.</p>
-      <p>Actualmente maineamos juegos Third Person Shooting (TPS) y nos mantendremos así hasta expandirnos a más.</p>
-      <div class="logos" aria-label="Logos del clan Astral">
-        <img src="https://cdn.discordapp.com/icons/1118019804440318043/402d9f7bc4ab2877513fb9b691504510.png?size=512" alt="Logo secundario Clan Astral" />
-      </div>
-    </div>
+    <p>
+      ASTRAL fue fundada por Vyhard, Thiago y Playe en mediados de 2022, el primer imperio español surgido dentro de Anomic y de muchos dentro de ROBLOX, donde se demuestra la lealtad de todos sus miembros y Legionarios en servicio. Solo los mejores de los mejores serán considerados dignos de unirse a ASTRAL y al programa de Legionarios. Este codex explicará las reglas que todo recluta y Legionario debe seguir durante su servicio en ASTRAL. Se aplicarán castigos a quienes decidan romper las leyes.
+    </p>
+    <p>
+      Actualmente maineamos juegos Third Person Shooting (TPS) y nos mantendremos así hasta expandirnos a más.
+    </p>
+    <img class="intro-image" src="https://media.discordapp.net/attachments/1392054690094518432/1392054690572800120/file_00000000bee861f58830ae4c58dfba86_1.png?ex=68c677f5&is=68c52675&hm=a05f95a97fa0eb82414e54c310ce7e0470d3e42e8a3abe58af8eaf2e510605e5&=&.png?format=webp&quality=lossless&width=817&height=817">
   </section>
-  <section id="reglas" tabindex="0" aria-label="Reglas del clan Astral" role="tabpanel" aria-hidden="true">
-    <h2>Reglas ASTRAL</h2>
-    <div class="card">
-      <p>Las leyes a continuación deben ser respetadas por todos los Reclutas y Legionarios en todo momento. Cualquier violación reportada de las siguientes leyes resultará en un castigo.</p>
-      <ul>
-        <li><strong>LEY 1:</strong> Todos los reclutas deben respetar a sus superiores y compañeros.</li>
-        <li><strong>LEY 2:</strong> La disciplina es obligatoria en ASTRAL. No seas estúpido.</li>
-        <li><strong>LEY 3:</strong> La actividad es clave para progresar en ASTRAL. Cualquier razón de inactividad debe ser reportada.</li>
-        <li><strong>LEY 4:</strong> Los reclutas NO tienen permiso para organizar incursiones contra otros clanes. Solo los Oficiales o superiores pueden hacerlo.</li>
-        <li><strong>LEY 8:</strong> Todos los miembros de ASTRAL deben mantener una actitud positiva, tanto en la victoria como en la adversidad.</li>
-        <li><strong>LEY 8:</strong> Cualquier inconveniente y cosas que afecten negativamente a ASTRAL en combate será una sanción negativa.</li>
-      </ul>
-    </div>
+
+  <section id="reglas">
+    <h2>Reglas Astral</h2>
+    <ul>
+      <li><strong>LEY 1:</strong> Todos los reclutas deben respetar a sus superiores y compañeros.</li>
+      <li><strong>LEY 2:</strong> La disciplina es obligatoria en ASTRAL. No seas estúpido.</li>
+      <li><strong>LEY 3:</strong> La actividad es clave para progresar en ASTRAL. Cualquier razón de inactividad debe ser reportada.</li>
+      <li><strong>LEY 4:</strong> Los reclutas NO tienen permiso para organizar incursiones contra otros clanes. Solo los Oficiales o superiores pueden hacerlo.</li>
+      <li><strong>LEY 8:</strong> Todos los miembros de ASTRAL deben mantener una actitud positiva, tanto en la victoria como en la adversidad.</li>
+      <li><strong>LEY 8:</strong> Cualquier inconveniente y cosas que afecten negativamente a ASTRAL en combate será una sanción negativa.</li>
+    </ul>
   </section>
-  <section id="rangos" tabindex="0" aria-label="Sistema de rangos del clan Astral" role="tabpanel" aria-hidden="true">
+
+  <section id="rangos">
     <h2>Sistema de Rangos</h2>
-    <div class="card">
-      <p><strong>I</strong> es la división inicial para todos los miembros, los cuales cruzarán por una gran variedad de rangos y progresión para alcanzar el rango Legionario. Una vez conseguido este rango es una muestra de tu total lealtad y prioridad al grupo.</p>
-      <p>Es un camino difícil y largo, pero ser Legionario traerá muchos beneficios, ya sea mayor cantidad de permisos de hoster, ventajas en Discord, prioridad, etc.</p>
-      <h3>Progresión de Rangos</h3>
-      <ul>
-        <li>I - Recluta inicial</li>
-        <li>II - Aprendiz</li>
-        <li>III - Soldado</li>
-        <li>IV - Veterano</li>
-        <li>V - Oficial</li>
-        <li>Legionario - Miembro leal y prioritario</li>
-        <li>Centurión - Líder de escuadra</li>
-      </ul>
-    </div>
+    <p>
+      I es la división inicial para todos los miembros, los cuales cruzarán por una gran variedad de rangos y progresión para alcanzar el rango Legionario. Una vez conseguido este rango es una muestra de tu total lealtad y prioridad al grupo.
+    </p>
+    <p>
+      Es un camino difícil y largo, pero ser Legionario traerá muchos beneficios, ya sea mayor cantidad de permisos de hoster, ventajas en Discord, prioridad, etc.
+    </p>
+    <h3>Progresión de Rangos</h3>
+    <ul>
+      <li>I</li>
+      <li>II</li>
+      <li>III</li>
+      <li>IV</li>
+      <li>V</li>
+      <li>Legionario</li>
+      <li>Centurión</li>
+    </ul>
   </section>
-  <section id="realeza" tabindex="0" aria-label="Realeza del clan Astral" role="tabpanel" aria-hidden="true">
+
+  <section id="realeza">
     <h2>Realeza</h2>
-    <div class="card">
-      <p>La realeza son aquellos que manejan el clan absoluto y toman las decisiones sobre cualquier cambio.</p>
-      <ul>
-        <li>Príncipe - <strong>@Vysticc</strong></li>
-        <li>Rey - <strong>@Vylenzee</strong></li>
-        <li>Lords - <strong>@Norbi, @Abey</strong></li>
-        <li>Emperador - <strong>@Vyhard, Playe</strong></li>
-      </ul>
-    </div>
+    <p>La realeza son aquellos que manejan el clan absoluto y toman las decisiones sobre cualquier cambio.</p>
+    <ul>
+      <li>Príncipe - <span style="color:#45a29e;">@Vysticc</span></li>
+      <li>Rey - <span style="color:#45a29e;">@Vylenzee</span></li>
+      <li>Lords - <span style="color:#45a29e;">@Norbi</span>, <span style="color:#45a29e;">@Abey</span></li>
+      <li>Emperador - <span style="color:#45a29e;">@Vyhard</span>, <span style="color:#45a29e;">Playe</span></li>
+    </ul>
   </section>
-  <section id="objetivos" tabindex="0" aria-label="Objetivos y metas del clan Astral" role="tabpanel" aria-hidden="true">
+
+  <section id="objetivos">
     <h2>Objetivos y Metas</h2>
-    <div class="card">
-      <p>El objetivo de Astral es mantenernos vivos y expandirnos en la plataforma poco a poco, reclutando nuevos miembros, conociendo nuevos juegos y a su vez manteniendo una buena comunidad de confianza y conocimiento.</p>
-      <p>Queremos seguir creciendo como el clan más grande de Anomic de habla hispana.</p>
-      <div class="fotos-astral" aria-label="Fotos del clan Astral">
-        <img src="https://cdn.discordapp.com/attachments/1121868191665225749/1395959396810494043/image.png" alt="Foto Astral 1" />
-        <img src="https://cdn.discordapp.com/attachments/1121868191665225749/1392385271860953200/image.png" alt="Foto Astral 2" />
-        <img src="https://media.discordapp.net/attachments/1121868191665225749/1392381039485259816/image.png" alt="Foto Astral 3" />
-      </div>
+    <p>
+      El objetivo de Astral es mantenernos vivos y expandirnos en la plataforma poco a poco, reclutando nuevos miembros, conociendo nuevos juegos y a su vez manteniendo una buena comunidad de confianza y conocimiento, y seguir creciendo como el clan más grande de Anomic de habla hispana.
+    </p>
+    <p><em>Documento en mantenimiento.</em></p>
+  </section>
+
+  <section id="discord" style="text-align:center;">
+    <h2>Únete a nuestro Discord</h2>
+    <a href="https://discord.gg/N7XmD3TrEz" target="_blank" rel="noopener noreferrer" style="
+      display: inline-block;
+      margin-top: 10px;
+      background: #7289da;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    ">Entrar al servidor Discord de Astral</a>
+    <div style="margin-top: 20px;">
+      <img src="https://images-ext-1.discordapp.net/external/KJuh5BrcieNVuh8lV3sCMmsWfm9LouiTdvqBfEpO0tY/%3Fsize%3D4096/https/cdn.discordapp.com/icons/1118019804440318043/402d9f7bc4ab2877513fb9b691504510.png?format=webp&quality=lossless&width=230&height=230" alt="Icono Discord Astral" style="width:120px; border-radius: 15px; border: 2px solid #7289da;" />
     </div>
   </section>
-  <section id="warlogs" tabindex="0" aria-label="Warlogs del clan Astral" role="tabpanel" aria-hidden="true">
-    <h2>Warlogs</h2>
-    <div class="card warlogs" aria-live="polite" aria-atomic="true" aria-relevant="additions">
-<pre>
-Astral 5-0 POV
-Astral 5-1 TFR
-Astral 3-2 SPARTA
-Astral 5-2 BENIHANA
-Astral 5-1 SPARTA
-Astral 5-4 SPARTA
-Astral 3-2 TC
-Astral 3-0 Imperium Of SPARTA
-Astral 5-1 Vaskovia
-Astral 3-0 Overheaven
-Astral 5-2 TFR
-Astral 5-4 Vaskovia
-Astral 5-4 BLST
-Astral 4-5 Vaskovia
-Astral 5-0 BLST
-Astral 3-2 707 (that was very easy lol)
-Astral 5-0 REDS SHADOWS
-Astral 5-0 10 Legends
-Astral 5-0 CASPERLAR
-Astral 5-3 10 Legends
-Astral 5-1 CASPERLAR
-Astral 5-1 KOV
-Astral 3-0 TFR
-Astral 1-3 SPARTA
-Astral 3-2 SPARTA
-Astral 4-5 Vaskovia
-Astral 5-4 Overheaven
-Astral 5-3 Vaskovia
-Astral 5-1 TFR
-Astral 5-0 BRSK
-Astral 5-4 Vaskovia
-Astral 5-0 Overheaven
-Astral 5-0 Illusion
-Astral 5-4 SPARTA
-Astral 5-1 Overheaven
-Astral 5-4 Overheaven
-Astral 5-0 SPARTA
-Astral 5-3 Overheaven
-Astral 5-3 VASKOVIA
-Astral 5-3 BLST
-Astral 5-2 Overheaven
-Astral 5-2 Vaskovia
-Astral 5-1 LNN
-Astral 3-0 Gamers Paradise
-Astral 5-3 Guerrilla Warfare
-Astral 5-0 Guerrilla Warfare
-Astral 1-3 707
-Astral 3-0 707
-Astral 3-1 Guerrilla Warfare
-Astral 5-4 Guerrilla Warfare
-Astral 3-0 Guerrilla Warfare
-Astral 5-1 LNN
-Astral 5-0 TAK
-Astral 5-0 LNN
-Astral 5-0 LNN
-Astral 5-3 Guerrilla Warfare
-Astral 4-1 Guerrilla Warfare
-Astral 3-5 Guerrilla Warfare
-Astral 3-0 United Spanish Front
-Astral 3-1 Guerrilla Warfare
-Astral 5-1 Guerrilla Warfare
-Astral 0-3 Guerrilla Warfare
-Astral 5-0 Guerrilla Warfare
-</pre>
-    </div>
-  </section>
-  <section id="contacto"
+</main>
+<footer>
+  &copy; 2025 Astral - Todos los derechos reservados
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('nav button.tab-button');
+  const sections = document.querySelectorAll('main section');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+    
+      buttons.forEach(btn => btn.classList.remove('active'));
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      
+      button.classList.add('active');
+
+      
+      const target = button.getAttribute('data-target');
+      const sectionToShow = document.getElementById(target);
+      if (sectionToShow) {
+        sectionToShow.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
